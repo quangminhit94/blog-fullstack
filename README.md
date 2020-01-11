@@ -25,3 +25,11 @@ the actual server code that is execute by NODE. Express code is executed by Node
 
 - pg: main library to communicate with postgrest database. Without this, the communication will not be possible
 
+# 3 setting up a proxy and making API requests
+## setting a proxy
+Add proxy to `client/package.json` like this:
+```sh
+{
+  "proxy": "http://localhost:5000"
+}
+```
