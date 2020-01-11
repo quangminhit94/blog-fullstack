@@ -28,8 +28,9 @@ the actual server code that is execute by NODE. Express code is executed by Node
 # 3 setting up a proxy and making API requests
 ## setting a proxy
 Add proxy to `client/package.json` like this:
-```sh
+```json
 {
   "proxy": "http://localhost:5000"
 }
 ```
+
