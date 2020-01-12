@@ -32,3 +32,19 @@ the actual server code that is execute by NODE. Express code is executed by Node
     {
       "proxy": "http://localhost:5000"
     }
+
+# 4 Using axios to fetch data
+
+```sh
+$ yarn add axios
+```
+
+1. Create instance axios if using different url
+    const axiosInstance = axios.create({
+      baseURL: 'https://jsonplaceholder.typicode.com'
+    })
+
+2. Fetch data by using axios with default url (proxy setup)
+    axios.get('/hello')
+      .then(res => this.setState({hello: res.data}))
+      .catch(err => console.error(err))
