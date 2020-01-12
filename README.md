@@ -48,3 +48,20 @@ $ yarn add axios
     axios.get('/hello')
       .then(res => this.setState({hello: res.data}))
       .catch(err => console.error(err))
+
+# 5 Fetch vs axios
+| FETCH | AXIOS |
+| ------ | ------ |
+| vanilla javascript | 3rd party |
+| can be read directly by browsers | has to be compiled |
+| Have to manually transform data | Automatically transform data |
+| more verbose | less verbose |
+| Fetch Hard to work with | Axios Easy to work with |
+
+## Using async await with fetch
+    fetchDataUsingFetch = async () => {
+      await fetch('https://jsonplaceholder.typicode.com/posts')
+              .then(res => res.json())
+              .then(json => console.table(json))
+              .catch(err => console.error(err))
+    }

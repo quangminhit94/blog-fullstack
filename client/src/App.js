@@ -13,7 +13,8 @@ class App extends Component {
 
   componentDidMount() {
     this.renderHelloUsingAxios()
-    this.renderFromJsonPlaceholder()
+    // this.renderFromJsonPlaceholder()
+    this.fetchDataUsingFetch()
   }
 
   renderHelloUsingAxios() {
@@ -26,7 +27,14 @@ class App extends Component {
     axiosInstance.get('/posts')
       .then(res => console.log(res.data))
       .catch(err => console.error(err))
-  } 
+  }
+
+  fetchDataUsingFetch = async () => {
+    await fetch('https://jsonplaceholder.typicode.com/posts')
+            .then(res => res.json())
+            .then(json => console.table(json))
+            .catch(err => console.error(err))
+  }
 
   render() {
     return (
