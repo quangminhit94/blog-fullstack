@@ -65,3 +65,8 @@ $ yarn add axios
               .then(json => console.table(json))
               .catch(err => console.error(err))
     }
+
+# 6 Axios, Express Router and React Router work together
+| AXIOS | EXPRESS ROUTER | REACT ROUTER |
+| ------ | ------ | ------ |
+| Used to communicate with server through api call | Used to communicate with database | Used to navigate within our app |
