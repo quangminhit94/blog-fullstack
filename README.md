@@ -101,3 +101,7 @@ fetchDataUsingFetch = async () => {
 | - We signed api calls by using `/api` at the beginning of the route | - More secure than axios            | Can't make api calls              |
 | - Used to communicate with other backend api                        | - Server side only                  | -                                 |
 | - Promise based                                                     | -                                   | -                                 |
+
+## 7. how CORS works
+
+When our React Frontend communicate with Express server, we're pretending origin locahost:3000 to localhost:5000 using proxy. This process can be called using cors
