@@ -105,3 +105,15 @@ fetchDataUsingFetch = async () => {
 ## 7. how CORS works
 
 When our React Frontend communicate with Express server, we're pretending origin locahost:3000 to localhost:5000 using proxy. This process can be called using cors
+
+## 8. why not use ORM like Sequelize
+
+- What is Sequelize
+
+    Sequelize is an Object Relational Mapper (ORM), which simplifies interacting with relational databases by abstracting away the need to use SQL directly.
+
+- Why not use ORM like Sequelize?
+  - Preference for directly working with SQL
+  - Allows more control than ORM
+  - More resource for SQL than an ORM
+  - ORM skills are not transferable, SQL skills are very transferable
