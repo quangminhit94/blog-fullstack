@@ -42,11 +42,11 @@ npm install -g express-generator
 
 1. Add proxy to `client/package.json` like this:
 
-```json
-{
-  "proxy": "http://localhost:5000"
-}
-```
+   ```json
+   {
+     "proxy": "http://localhost:5000"
+   }
+   ```
 
 ## 4. Using axios to fetch data
 
@@ -54,21 +54,23 @@ npm install -g express-generator
 yarn add axios
 ```
 
+### Fetch
+
 1. Create instance axios if using different url
 
-```js
-const axiosInstance = axios.create({
-   baseURL: 'https://jsonplaceholder.typicode.com'
- })
-```
+   ```js
+   const axiosInstance = axios.create({
+      baseURL: 'https://jsonplaceholder.typicode.com'
+    })
+   ```
 
 2. Fetch data by using axios with default url (proxy setup)
 
-```js
-axios.get('/hello')
-  .then(res => this.setState({hello: res.data}))
-  .catch(err => console.error(err))
-```
+   ```js
+   axios.get('/hello')
+     .then(res => this.setState({hello: res.data}))
+     .catch(err => console.error(err))
+   ```
 
 ## 5. Fetch vs axios
 
@@ -80,7 +82,7 @@ axios.get('/hello')
 | more verbose                     | less verbose                 |
 | Fetch Hard to work with          | Axios Easy to work with      |
 
-## Using async await with fetch
+### Using async await with fetch
 
 ```js
 fetchDataUsingFetch = async () => {
