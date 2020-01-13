@@ -69,4 +69,7 @@ $ yarn add axios
 # 6 Axios, Express Router and React Router work together
 | AXIOS | EXPRESS ROUTER | REACT ROUTER |
 | ------ | ------ | ------ |
-| Used to communicate with server through api call | Used to communicate with database | Used to navigate within our app |
+| - Used to communicate with server through api call | - Used to communicate with database | - Used to navigate within our app |
+| - We signed api calls by using `/api` at the beginning of the route | - More secure than axios | Can't make api calls |
+| - Used to communicate with other backend api | - Server side only | - |
+| - Promise based | - | - |
