@@ -139,7 +139,7 @@ CREATE TABLE users (
   email_verify BOOLEAN,
   date_created DATE,
   last_login DATE
-)
+);
 
 CREATE TABLE posts (
   pid SERIAL PRIMARY KEY,
@@ -148,7 +148,7 @@ CREATE TABLE posts (
   user_id INT REFERENCES users(uid),
   author VARCHAR REFERENCES users(username),
   date_created TIMESTAMP
-)
+);
 
 CREATE TABLE comments (
   cid SERIAL PRIMARY KEY,
@@ -157,7 +157,7 @@ CREATE TABLE comments (
   user_id INT REFERENCES users(uid),
   post_id INT REFERENCES posts(pid),
   date_created TIMESTAMP
-)
+);
 ```
 
 ## 12. Setting up the local database
