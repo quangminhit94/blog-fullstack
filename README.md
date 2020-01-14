@@ -173,7 +173,7 @@ Open PSQL shell then
 - List all tables inside mydb
 
   ```pg
-  \dt
+  \dt;
   ```
 
 - Execute some create table queries form period 11
