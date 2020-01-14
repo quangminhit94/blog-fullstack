@@ -181,3 +181,23 @@ Open PSQL shell then
   ```sql
   CREATE TABLE ...
   ```
+
+## 13. Setting up the actions for our app
+
+Create action types inside `client/src/store/actions/action_types.js` like example:
+
+```js
+export const SUCCESS = "SUCCESS"
+```
+
+Create action functions inside `client/src/store/actions/actions.js`
+
+```js
+import * as ACTION_TYPES from './action_types'
+
+export const success = () => {
+  return {
+  type: ACTION_TYPES.SUCCESS
+  }
+}
+```
