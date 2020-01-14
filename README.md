@@ -122,3 +122,10 @@ When our React Frontend communicate with Express server, we're pretending origin
 
 Personally, I could not find a use case, because any Functionally by Redux Form can be accomplished relatively easier without Redux Form
 
+## 10. Fullstack blog overview
+
+- 3 main parts:
+  - SQL schema and PSQL database
+  - The client side Blog with CRUD Operations
+  - The node server with express routes and SQL queries
+
