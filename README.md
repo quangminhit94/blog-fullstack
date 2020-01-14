@@ -117,3 +117,8 @@ When our React Frontend communicate with Express server, we're pretending origin
   - Allows more control than ORM
   - More resource for SQL than an ORM
   - ORM skills are not transferable, SQL skills are very transferable
+
+## 9. Why not use Redux Form
+
+Personally, I could not find a use case, because any Functionally by Redux Form can be accomplished relatively easier without Redux Form
+
