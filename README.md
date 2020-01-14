@@ -159,3 +159,25 @@ CREATE TABLE comments (
   date_created TIMESTAMP
 )
 ```
+
+## 12. Setting up the local database
+
+Open PSQL shell then
+
+- Connect to mydb database
+
+  ```pg
+  \c mydb
+  ```
+
+- List all tables inside mydb
+
+  ```pg
+  \dt
+  ```
+
+- Execute some create table queries form period 11
+
+  ```sql
+  CREATE TABLE ...
+  ```
