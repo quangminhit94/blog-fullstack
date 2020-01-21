@@ -30,9 +30,10 @@ export const loginFailure = () => {
 	}
 }
 
-export const addProfile = () => {
+export const addProfile = (payload) => {
 	return {
-		type: ACTION_TYPES.ADD_PROFILE
+		type: ACTION_TYPES.ADD_PROFILE,
+		payload
 	}
 }
 
@@ -42,9 +43,10 @@ export const removeProfile = () => {
 	}
 }
 
-export const setDbProfile = () => {
+export const setDbProfile = (payload) => {
 	return {
-		type: ACTION_TYPES.SET_DB_PROFILE
+		type: ACTION_TYPES.SET_DB_PROFILE,
+		payload
 	}
 }
 
@@ -54,9 +56,10 @@ export const removeDbProfile = () => {
 	}
 }
 
-export const fetchDbPosts = () => {
+export const fetchDbPosts = (payload) => {
 	return {
-		type: ACTION_TYPES.FETCH_DB_POSTS
+		type: ACTION_TYPES.FETCH_DB_POSTS,
+		payload
 	}
 }
 
@@ -72,9 +75,10 @@ export const removeDbPosts = () => {
 	}
 }
 
-export const fetchPostComments = () => {
+export const fetchPostComments = (payload) => {
 	return {
-		type: ACTION_TYPES.FETCH_POST_COMMENTS
+		type: ACTION_TYPES.FETCH_POST_COMMENTS,
+		payload
 	}
 }
 

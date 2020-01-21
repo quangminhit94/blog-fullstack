@@ -201,3 +201,6 @@ export const success = () => {
   }
 }
 ```
+
+## 14. Setting up reducer
+
