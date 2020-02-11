@@ -204,3 +204,21 @@ export const success = () => {
 
 ## 14. Setting up reducer
 
+## 15. Setting up the authcheck component
+
+1. [x] Learn how routes work
+2. [x] Learn how setup authcheck: login_sucess, login_failure in FE side
+
+## 16. Setting up the psql credentials
+
+1. [x] Learn how use pool of pg library to connect with psql
+
+## 17. setting up post routes and sql queries
+
+1. [x] Setup post routes section inside router
+2. [x] How use `router.get(url, (req, res))`
+3. [x] How use `pool.query(QUERY_STRING, values, (query_error, query_response) => {})`
+
+## 18. setting up comments routes and sql queries
+
+- [x] Setup comments routes section 
