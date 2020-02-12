@@ -2,8 +2,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-import { Component1 } from './functional/Component1'
-import Container1 from './containers/Container1'
+// import { Component1 } from './functional/Component1'
+// import Container1 from './containers/Container1'
 
 const axiosInstance = axios.create({
   baseURL: 'https://jsonplaceholder.typicode.com'
@@ -43,8 +43,8 @@ class App extends Component {
     return (
       <div>
         {this.state.hello ? <div>{this.state.hello}</div> : null}
-        <Container1 nickname="Cat"></Container1>
-        <Component1 name="moe" age="25"></Component1>
+        {/* <Container1 nickname="Cat"></Container1> */}
+        {/* <Component1 name="moe" age="25"></Component1> */}
       </div>
     )
   }

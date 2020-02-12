@@ -13,13 +13,10 @@ router.get('/hello', (req, res) => {
 */
 
 router.get('/api/get/all_posts', (req, res, next) => {
-  pool.query('SELECT * FROM posts ORDER BY date_created DESC', (q_error, q_response) {
+  pool.query('SELECT * FROM posts ORDER BY date_created DESC', (q_error, q_response) => {
     res.json(q_response.rows)
   })
 })
-
-var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: false }));
 
 router.post('/api/posts/post_to_db', (req, res, next) => {
   const values = [req.body.title, req.body.body, req.body.uid, req.body.username]

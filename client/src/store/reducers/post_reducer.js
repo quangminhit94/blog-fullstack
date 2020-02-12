@@ -6,7 +6,7 @@ export const initialState = {
 }
 
 
-const AuthReducer (state = initialState, { type, payload }) => {
+const AuthReducer = (state = initialState, { type, payload }) => {
   switch (type) {
 
   case ACTION_TYPES.FETCH_DB_POSTS:

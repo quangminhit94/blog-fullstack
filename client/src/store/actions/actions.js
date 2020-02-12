@@ -69,12 +69,6 @@ export const removeDbPosts = () => {
 	}
 }
 
-export const removeDbPosts = () => {
-	return {
-		type: ACTION_TYPES.REMOVE_DB_POSTS
-	}
-}
-
 export const fetchPostComments = (payload) => {
 	return {
 		type: ACTION_TYPES.FETCH_POST_COMMENTS,
