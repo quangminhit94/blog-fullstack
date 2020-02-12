@@ -69,6 +69,7 @@ router.post('api/posts/comment_to_db', (req, res, next) => {
   })
 })
 
+
 router.put('api/put/comment_to_db', (req, res, next) => {
   const values = [req.body.comment, req.body.user_id, req.body.post_id, req.body.username, req.body.cid]
   pool.query(`UPDATE comments SET 
@@ -92,6 +93,37 @@ router.get('api/get/all_post_comments', (req, res, next) => {
   const post_id = String(req.query.post_id)
   pool.query(`SELECT * FROM comments
               WHERE post_id = $1`, [post_id], (q_error, q_response) => {
+    res.json(q_response.rows)
+    console.log(q_error)
+  })
+})
+
+/**
+ * USER PROFILE SECTION
+ */
+router.post('api/posts/user_profile_to_db', (req, res, next) => {
+  const values = [req.body.profile.nickname, req.body.profile.email, req.body.profile.email_verified]
+  pool.query(`INSERT INTO users(username, email, email_verified, date_created)
+              VALUES($1, $2, $3, NOW())
+              ON CONFLICT DO NOTHING`, values, (q_error, q_response) => {
+    res.json(q_response.rows)
+    console.log(q_error)
+  })
+})
+
+router.get('api/get/user_profile_to_db', (req, res, next) => {
+  const email = String(req.body.email)
+  pool.query(`SELECT * FROM users
+              WHERE email = $1`, [email], (q_error, q_response) => {
+    res.json(q_response.rows)
+    console.log(q_error)
+  })
+})
+
+router.get('api/get/user_posts', (req, res, next) => {
+  const user_id = String(req.body.user_id)
+  pool.query(`SELECT * FROM posts
+              WHERE user_id = $1`, [user_id], (q_error, q_response) => {
     res.json(q_response.rows)
     console.log(q_error)
   })

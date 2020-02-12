@@ -221,4 +221,16 @@ export const success = () => {
 
 ## 18. setting up comments routes and sql queries
 
-- [x] Setup comments routes section 
+- [x] Setup comments routes section
+
+## 19. setting up user routes and sql queries
+
+## 20. client side blog overview
+
+- [ ] addpost.js: A form to summit posts
+- [ ] editpost.js: edit posts with form that has fields already populated
+- [ ] posts.js: render all posts, as in a typical forum
+- [ ] showpost.js: A component to render an individual post after a suer has clicked on a post
+- [ ] profile.js: renders posts associated with a user. User dashboard
+
+## 21. the addpost js component
