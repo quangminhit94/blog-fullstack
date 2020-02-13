@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-
-import * as ACTION_TYPES from '../store/actions/action_types'
 import * as ACTIONS from '../store/actions/actions'
 
 import { connect } from 'react-redux'
@@ -35,11 +33,11 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    action1: () => dispatch(ACTIONS.SUCCESS),
-    action2: () => dispatch(ACTIONS.FAILURE),
+    action1: () => dispatch(ACTIONS.success()),
+    action2: () => dispatch(ACTIONS.failure()),
     action_creator1: () => dispatch(ACTIONS.success()),
     action_creator2: () => dispatch(ACTIONS.failure()),
-    action_creator3: (text) => dispatch(ACTIONS.user_input(text))
+    action_creator3: (text) => dispatch(ACTIONS.userInput(text))
   }
 }
 

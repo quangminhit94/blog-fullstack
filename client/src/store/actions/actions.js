@@ -12,9 +12,10 @@ export const failure = () => {
 	}
 }
 
-export const userInput = () => {
+export const userInput = (payload) => {
 	return {
-		type: ACTION_TYPES.USER_INPUT
+		type: ACTION_TYPES.USER_INPUT,
+		payload
 	}
 }
 
@@ -66,6 +67,19 @@ export const fetchDbPosts = (payload) => {
 export const removeDbPosts = () => {
 	return {
 		type: ACTION_TYPES.REMOVE_DB_POSTS
+	}
+}
+
+export const fetchUserPosts = (payload) => {
+	return {
+		type: ACTION_TYPES.FETCH_USER_POSTS,
+		payload
+	}
+}
+
+export const removeUserPosts = () => {
+	return {
+		type: ACTION_TYPES.REMOVE_USER_POSTS
 	}
 }
 

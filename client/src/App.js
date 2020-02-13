@@ -1,9 +1,7 @@
 
 import React, { Component } from 'react'
 import axios from 'axios'
-
-// import { Component1 } from './functional/Component1'
-// import Container1 from './containers/Container1'
+import Routes from './Routes'
 
 const axiosInstance = axios.create({
   baseURL: 'https://jsonplaceholder.typicode.com'
@@ -17,7 +15,7 @@ class App extends Component {
   componentDidMount() {
     this.renderHelloUsingAxios()
     // this.renderFromJsonPlaceholder()
-    this.fetchDataUsingFetch()
+    // this.fetchDataUsingFetch()
   }
 
   renderHelloUsingAxios() {
@@ -45,6 +43,9 @@ class App extends Component {
         {this.state.hello ? <div>{this.state.hello}</div> : null}
         {/* <Container1 nickname="Cat"></Container1> */}
         {/* <Component1 name="moe" age="25"></Component1> */}
+        <br/>
+        React
+        <Routes />
       </div>
     )
   }

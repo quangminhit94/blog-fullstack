@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import * as ACTIONS from '../store/actions/actions'
 import Axios from 'axios'
 import Button from '@material-ui/core/Button'
-import { Table, TableCell, TableBody, TableHead, TableRow } from '@material-ui/core/Table'
+import { Table, TableCell, TableBody, TableHead, TableRow } from '@material-ui/core/'
 import Paper from '@material-ui/core/Paper'
 
 const RenderPosts = post => (
@@ -21,7 +21,7 @@ const RenderPosts = post => (
 
 export class Posts extends Component {
   componentDidMount() {
-    Axios.get('/api/get/all_posts')
+    Axios.get('http://localhost:5000/api/get/all_posts')
       .then(res => this.props.set_posts(res.data))
       .catch(err => console.log(err))
       .then()

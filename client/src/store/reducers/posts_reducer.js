@@ -2,11 +2,12 @@ import * as ACTION_TYPES from '../actions/action_types'
 
 export const initialState = {
   posts: [],
-  comments: []
+  comments: [],
+  user_posts: []
 }
 
 
-const AuthReducer = (state = initialState, { type, payload }) => {
+const PostsReducer = (state = initialState, { type, payload }) => {
   switch (type) {
 
   case ACTION_TYPES.FETCH_DB_POSTS:
@@ -18,6 +19,16 @@ const AuthReducer = (state = initialState, { type, payload }) => {
     return { 
       ...state, 
       posts: []
+    }
+  case ACTION_TYPES.FETCH_USER_POSTS:
+    return { 
+      ...state, 
+      user_posts: payload
+    }
+  case ACTION_TYPES.REMOVE_USER_POSTS:
+    return { 
+      ...state, 
+      user_posts: []
     }
   case ACTION_TYPES.FETCH_POST_COMMENTS:
     return { 
@@ -34,4 +45,4 @@ const AuthReducer = (state = initialState, { type, payload }) => {
   }
 }
 
-export default AuthReducer
+export default PostsReducer

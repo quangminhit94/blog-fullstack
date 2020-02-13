@@ -45,10 +45,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     loginSuccess: () => dispatch(ACTIONS.loginSuccess()),
     loginFailure: () => dispatch(ACTIONS.loginFailure()),
-    addProfile: () => dispatch(ACTIONS.addProfile(profile)),
+    addProfile: (profile) => dispatch(ACTIONS.addProfile(profile)),
     removeProfile: () => dispatch(ACTIONS.removeProfile()),
-    setDbProfile: () => dispatch(ACTIONS.setDbProfile(profile)),
-    removeProfile: () => dispatch(ACTIONS.removeDbProfile())
+    setDbProfile: (profile) => dispatch(ACTIONS.setDbProfile(profile)),
+    removeDbProfile: () => dispatch(ACTIONS.removeDbProfile())
   }
 }
 

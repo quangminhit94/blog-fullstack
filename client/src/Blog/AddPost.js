@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
-import history from './history'
+import history from '../utils/history'
 import TextField from '@material-ui/core/TextField'
 import { connect } from 'react-redux'
 
