@@ -31,11 +31,11 @@ export class Profile extends Component {
   
 
   componentDidMount() {
-    const user_id = this.props.db_profile[0].uid
-
-    Axios.get('/api/get/user_posts', {params: {user_id: user_id}})
-      .then((res) => this.props.set_user_posts(res.data))
-      .catch(err => console.log(err))
+    // const user_id = this.props.db_profile[0].uid
+    // debugger
+    // Axios.get('/api/get/user_posts', {params: {user_id: user_id}})
+    //   .then((res) => this.props.set_user_posts(res.data))
+    //   .catch(err => console.log(err))
   }
 
   handleClickOpen = (pid) => (
@@ -54,18 +54,20 @@ export class Profile extends Component {
       .then(() => this.handleClickClose)
       .then(() => setTimeout(() => history.replace('/'), 700))
   }
-  RenderProfile = (props) => (
-    <div>
-      <h1>{props.profile.profile.nickname}</h1>
-      <br/>
-      <img src={props.profile.profile.picture} alt=""/>
-      <br/>
-      <h4>{props.profile.profile.email}</h4>
-      <h5>{props.profile.profile.name}</h5>
-      <h6>Email verified</h6>
-      {props.profile.profile.email_verified ? <p>YES</p> : <p>NO</p>}
-    </div>
-  )
+  RenderProfile = (props) => {
+    return (
+      <div>
+        <h1>{props.profile.profile.nickname}</h1>
+        <br/>
+        <img src={props.profile.profile.picture} alt=""/>
+        <br/>
+        <h4>{props.profile.profile.email}</h4>
+        <h5>{props.profile.profile.name}</h5>
+        <h6>Email verified</h6>
+        {props.profile.profile.email_verified ? <p>YES</p> : <p>NO</p>}
+      </div>
+    )
+  }
 
   RenderPost = post => (
     <Card style={{width: '500px', height: '200px', marginBottom: '10px', paddingBottom: '80px'}}>

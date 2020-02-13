@@ -45,13 +45,15 @@ const handleAuthentication = (props) => {
   }
 }
 
-const PrivateRoute = ({component: Component, auth }) => (
+const PrivateRoute = ({component: Component, auth }) => {
+  debugger
+  return (
   <Route render={props => auth.isAuthenticated() === true
     ? <Component auth={auth} {...props} />
     : <Redirect to={{pathname:'/redirect'}} />
   }
   />
-)
+)}
 
 
 

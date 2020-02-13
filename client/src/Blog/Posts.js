@@ -30,7 +30,7 @@ export class Posts extends Component {
     return (
       <div>
         <br/>
-        <Link to='/new_post'>
+        <Link to='/add_post'>
           <Button color='primary'>Add Post</Button>
         </Link>
         <h1>Posts</h1>

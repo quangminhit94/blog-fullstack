@@ -1,14 +1,23 @@
 import history from './history'
 import auth0 from 'auth0-js'
 
+let instance = null
+
 export default class Auth {
-  auth0 = new auth0.WebAuth({
-    domain: 'webapp1.auth0.com',
-    clientID: 'uZxUdMAsiDWeu3OrNpoi4JwJscdF5nAx',
-    redirectUri: 'http://localhost:3000/callback',
-    responseType: 'token id_token',
-    scope: 'openid profile email'
-  })
+  constructor() {
+    if(!instance) {
+      this.auth0 = new auth0.WebAuth({
+        domain: 'webapp1.auth0.com',
+        clientID: 'uZxUdMAsiDWeu3OrNpoi4JwJscdF5nAx',
+        redirectUri: 'http://localhost:3000/callback',
+        responseType: 'token id_token',
+        scope: 'openid profile email'
+      })
+      instance = this
+    }
+  }
+  
+  
 
   userProfile = {}
   
@@ -26,7 +35,7 @@ export default class Auth {
         localStorage.setItem('expiresAt', expiresAt)
 
         this.getProfile();
-        setTimeout(() => { history.replace('/authcheck') }, 2000);
+        setTimeout(() => { history.replace('/auth_check') }, 2000);
       } else {
         console.log(err)
       }
@@ -57,7 +66,7 @@ export default class Auth {
     localStorage.removeItem('access_token')
     localStorage.removeItem('id_token')
     localStorage.removeItem('expiresAt')
-    setTimeout(() => { history.replace('/authcheck') }, 200);
+    setTimeout(() => { history.replace('/auth_check') }, 200);
   }
 
   isAuthenticated = () => {
