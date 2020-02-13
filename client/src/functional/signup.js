@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Button from '@material-ui/core/Button';
 
 
@@ -14,4 +14,4 @@ const SignUp = (props) => (
   </div>
 )
 
-export default (SignUp);
+export default SignUp;

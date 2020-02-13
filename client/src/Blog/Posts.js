@@ -21,7 +21,7 @@ const RenderPosts = post => (
 
 export class Posts extends Component {
   componentDidMount() {
-    Axios.get('http://localhost:5000/api/get/all_posts')
+    Axios.get('/api/get/all_posts')
       .then(res => this.props.set_posts(res.data))
       .catch(err => console.log(err))
       .then()

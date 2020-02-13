@@ -1,9 +1,9 @@
 
 import React, { Component } from 'react'
-import axios from 'axios'
+import Axios from 'axios'
 import Routes from './Routes'
 
-const axiosInstance = axios.create({
+const axiosInstance = Axios.create({
   baseURL: 'https://jsonplaceholder.typicode.com'
 })
 
@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   renderHelloUsingAxios() {
-    axios.get('/hello')
+    Axios.get('/hello')
       .then(res => this.setState({hello: res.data}))
       .catch(err => console.error(err))
   }
