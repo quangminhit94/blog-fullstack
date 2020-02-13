@@ -31,6 +31,7 @@ export class Profile extends Component {
   
 
   componentDidMount() {
+    
     // const user_id = this.props.db_profile[0].uid
     // debugger
     // Axios.get('/api/get/user_posts', {params: {user_id: user_id}})

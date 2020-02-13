@@ -13,13 +13,14 @@ export default class Auth {
         responseType: 'token id_token',
         scope: 'openid profile email'
       })
+      this.userProfile = {}
       instance = this
     }
+
   }
   
   
 
-  userProfile = {}
   
   login = () => {
     this.auth0.authorize()

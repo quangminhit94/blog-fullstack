@@ -46,7 +46,6 @@ const handleAuthentication = (props) => {
 }
 
 const PrivateRoute = ({component: Component, auth }) => {
-  debugger
   return (
   <Route render={props => auth.isAuthenticated() === true
     ? <Component auth={auth} {...props} />
@@ -61,8 +60,8 @@ class Routes extends Component {
   componentDidMount() {
     if(auth.isAuthenticated()) {
       this.props.login_success()
-      auth.getProfile()
-      setTimeout(() => {this.props.add_profile(auth.userProfile)}, 400)
+      auth.getProfile(() => {this.props.add_profile(auth.userProfile)})
+      // setTimeout(() => {this.props.add_profile(auth.userProfile)}, 400)
     }
     else {
       this.props.login_failure()
