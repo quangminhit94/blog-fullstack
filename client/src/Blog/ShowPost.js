@@ -23,7 +23,6 @@ export class ShowPost extends Component {
   }
   RenderComments = comment => (
     <div>
-      {console.log(comment)}
       <h3>{comment.comment.comment}</h3>
       <small>{comment.comment.date_created}</small>
       <p>By: {comment.comment.author}</p>
@@ -65,13 +64,13 @@ export class ShowPost extends Component {
   }
 
   handleUpdate = () => {
-    const comment = this.state.comments
+    const comment = this.state.comment
     const cid = this.state.cid
     const user_id = this.props.db_profile[0].uid
     const post_id = this.props.location.state.post.post_id
     const username = this.props.db_profile[0].username
 
-    const data = {cid: cid, comment: comment,post_id: post_id, user_id: user_id, username: username}
+    const data = {cid: cid, comment: comment, post_id: post_id, user_id: user_id, username: username}
     Axios.put('/api/put/comment_to_db', data)
       .then(res => console.log(res))
       .catch(err => console.log(err))
@@ -82,7 +81,7 @@ export class ShowPost extends Component {
 
   handleDeleteComment = () => {
     const cid = this.state.cid
-    Axios.delete('/api/delete.comment', {data: {cid: cid}})
+    Axios.delete('/api/delete/comment', {data: {cid: cid}})
     .then(res => console.log(res))
     .catch(err => console.log(err))
     .then(setTimeout(() => history.replace('/'), 700) )
@@ -130,9 +129,9 @@ export class ShowPost extends Component {
                 <input type='text' value={this.state.comment} onChange={this.handleCommentChange}/>
               </DialogContentText>
               <DialogActions>
-                <Button onClick={() => this.handleUpdate}>Agree</Button>
-                <Button onClick={() => this.this.handleClose}>Cancel</Button>
-                <Button onClick={() => this.handleDeleteComment}>Delete</Button>
+                <Button onClick={() => this.handleUpdate()}>Agree</Button>
+                <Button onClick={() => this.handleClose()}>Cancel</Button>
+                <Button onClick={() => this.handleDeleteComment()}>Delete</Button>
               </DialogActions>
             </DialogContent>
           </Dialog>
