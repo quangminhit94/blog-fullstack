@@ -54,11 +54,10 @@ export class ShowPost extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     const user_id = this.props.db_profile[0].uid
-    const post_id = this.props.location.state.post.post_id
+    const post_id = this.props.location.state.post.post.pid
     const username = this.props.db_profile[0].username
     const data = {comment: event.target.comment.value, post_id: post_id, user_id: user_id, username: username}
-
-    Axios.post('/api/post/comment_to_db', data)
+    Axios.post('/api/posts/comment_to_db', data)
       .then(res => console.log(res))
       .catch(err => console.log(err))
       .then(setTimeout(() => history.replace('/'), 700) )

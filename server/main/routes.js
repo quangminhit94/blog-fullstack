@@ -86,7 +86,7 @@ router.delete('/api/delete/comment', (req, res, next) => {
 })
 
 router.get('/api/get/all_post_comments', (req, res, next) => {
-  const post_id = String(req.query.post_id)
+  const post_id = req.query.post_id
   pool.query(`SELECT * FROM comments
               WHERE post_id = $1`, [post_id], (q_error, q_response) => {
     res.json(q_response.rows)
