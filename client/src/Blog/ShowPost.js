@@ -143,7 +143,7 @@ export class ShowPost extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  comments: state.post_reducer.comments,
+  comments: state.posts_reducer.comments,
   db_profile: state.auth_reducer.db_profile
 })
 
