@@ -31,12 +31,10 @@ export class Profile extends Component {
   
 
   componentDidMount() {
-    
-    // const user_id = this.props.db_profile[0].uid
-    // debugger
-    // Axios.get('/api/get/user_posts', {params: {user_id: user_id}})
-    //   .then((res) => this.props.set_user_posts(res.data))
-    //   .catch(err => console.log(err))
+    const user_id = this.props.db_profile[0].uid
+    Axios.get('/api/get/user_posts', {params: {user_id: user_id}})
+      .then((res) => this.props.set_user_posts(res.data))
+      .catch(err => console.log(err))
   }
 
   handleClickOpen = (pid) => (
@@ -108,7 +106,7 @@ export class Profile extends Component {
         <div>
           {this.props.user_posts
             ? this.props.user_posts.map(post => 
-              <this.RenderProfile post={post} key={post.pid}></this.RenderProfile>)
+              <this.RenderPost post={post} key={post.pid}></this.RenderPost>)
             : null}
         </div>
         <Dialog 

@@ -15,7 +15,7 @@ export class AddPost extends Component {
                   username: username,
                   uid: user_id}
 
-    Axios.post('/api/post/post_to_db', data)
+    Axios.post('/api/posts/post_to_db', data)
       .then(res => console.log(res))
       .catch(err => console.log(err))
       .then(setTimeout(() => history.replace('/'), 700) )

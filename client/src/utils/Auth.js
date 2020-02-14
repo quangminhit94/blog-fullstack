@@ -1,21 +1,21 @@
 import history from './history'
 import auth0 from 'auth0-js'
 
-let instance = null
+// let instance = null
 
 export default class Auth {
   constructor() {
-    if(!instance) {
+    // if(!instance) {
       this.auth0 = new auth0.WebAuth({
-        domain: 'webapp1.auth0.com',
-        clientID: 'uZxUdMAsiDWeu3OrNpoi4JwJscdF5nAx',
+        domain: 'dev-hg8bw4xn.auth0.com',
+        clientID: 'klwFrTa1Du1sVAq1EAzjEUDOXYF8vegH',
         redirectUri: 'http://localhost:3000/callback',
         responseType: 'token id_token',
         scope: 'openid profile email'
       })
       this.userProfile = {}
-      instance = this
-    }
+      // instance = this
+    // }
 
   }
   
@@ -36,7 +36,7 @@ export default class Auth {
         localStorage.setItem('expiresAt', expiresAt)
 
         this.getProfile();
-        setTimeout(() => { history.replace('/auth_check') }, 2000);
+        setTimeout(() => { history.replace('/auth_check') }, 700);
       } else {
         console.log(err)
       }
