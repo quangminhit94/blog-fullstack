@@ -234,3 +234,15 @@ export const success = () => {
 - [ ] profile.js: renders posts associated with a user. User dashboard
 
 ## 21. the addpost js component
+
+## 22, 23, 24, 25, 26, 27 Episode
+
+- [x] Making our sign in, sign out, sign up with Auth0 Application handle JWT
+- [x] send user info to postgres db
+- [x] Load user info from db
+- [x] Add posts and load posts from db
+
+## 28. Testing out the skeleton app
+
+- [x] Load comments of the posts
+- [x] Edit Comments

@@ -12,18 +12,6 @@ import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Button from '@material-ui/core/Button'
 
-const RenderComments = comment => (
-  <div>
-    <h3>{comment.comment.comment}</h3>
-    <small>{comment.comment.date_created}</small>
-    <p>By: {comment.comment.author}</p>
-    {comment.cur_user_id === comment.comment.user_id
-      ? <Button onClick={() => this.handleClickOpen(comment.comment.cid, comment.comment.comment)}>
-        Edit
-      </Button>
-      : null}
-  </div>
-)
 export class ShowPost extends Component {
   constructor(props) {
     super(props)
@@ -33,6 +21,19 @@ export class ShowPost extends Component {
       cid: ''
     }
   }
+  RenderComments = comment => (
+    <div>
+      {console.log(comment)}
+      <h3>{comment.comment.comment}</h3>
+      <small>{comment.comment.date_created}</small>
+      <p>By: {comment.comment.author}</p>
+      {comment.cur_user_id === comment.comment.user_id
+        ? <Button onClick={() => this.handleClickOpen(comment.comment.cid, comment.comment.comment)}>
+          Edit
+        </Button>
+        : null}
+    </div>
+  )
 
   componentDidMount() {
     Axios.get('/api/get/all_post_comments', {params: {post_id: this.props.location.state.post.post.pid}})
@@ -101,10 +102,10 @@ export class ShowPost extends Component {
           <h2>Comments</h2>
           {this.props.comments
             ? this.props.comments.map(comment => 
-              <RenderComments 
+              <this.RenderComments 
                 comment={comment} 
                 cur_user_id={this.props.db_profile[0].uid} 
-                key={comment.cid}></RenderComments>)
+                key={comment.cid}></this.RenderComments>)
             : null}
         </div>
         <div>
