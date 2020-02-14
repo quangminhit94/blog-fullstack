@@ -19,7 +19,7 @@ import SignUp from './functional/Signup';
 import Posts from './Blog/Posts';
 import AddPost from './Blog/AddPost';
 import ShowPost from './Blog/ShowPost';
-// import EditPost from './Blog/editpost';
+import EditPost from './Blog/EditPost';
 
 // import ShowUser from './Profile/showuser';
 // import SendMessage from './Profile/sendmessage';
@@ -90,7 +90,7 @@ class Routes extends Component {
 
             <Route path='/posts' component={Posts} />
             <Route path='/post/:pid' component={ShowPost} />
-            {/* <Route path='/editpost/:pid' component={EditPost} /> */}
+            <Route path='/edit_post/:pid' component={EditPost} />
             <Route path='/add_post' component={AddPost} />
             <Route path="/signup" render={(props) => <SignUp auth={auth} {...props} />} />
 

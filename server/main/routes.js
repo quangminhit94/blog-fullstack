@@ -27,7 +27,7 @@ router.post('/api/posts/post_to_db', (req, res, next) => {
   })
 });
 
-router.put('/api/put/posts', (req, res, next) => {
+router.put('/api/put/post', (req, res, next) => {
   const values = [req.body.title, req.body.body, req.body.uid, req.body.pid, req.body.username]
   pool.query(`UPDATE posts SET title = $1, body = $2, user_id = $3, author = $5, date_created = NOW()
               WHERE pid = $4`, values, (q_error, q_response) => {

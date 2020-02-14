@@ -76,9 +76,9 @@ export class Profile extends Component {
             {post.post.title}
           </Link>
         }
-        subHeader={
+        subheader={
           <div className='FlexColumn'>
-          
+            {console.log(post)}
             <div className="FlexRow">
               {post.post.date_created}
             </div>

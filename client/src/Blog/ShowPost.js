@@ -138,7 +138,7 @@ export class ShowPost extends Component {
         </div>
       </div>
     )
-  }
+  }w
 }
 
 const mapStateToProps = (state) => ({
