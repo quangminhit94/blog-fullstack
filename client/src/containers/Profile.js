@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import * as ACTIONS from '../store/actions/actions'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Axios from 'axios'
 import history from '../utils/history'
 
@@ -28,26 +28,26 @@ export class Profile extends Component {
       post_id: null
     }
   }
-  
+
 
   componentDidMount() {
     const user_id = this.props.db_profile[0].uid
-    Axios.get('/api/get/user_posts', {params: {user_id: user_id}})
+    Axios.get('/api/get/user_posts', { params: { user_id: user_id } })
       .then((res) => this.props.set_user_posts(res.data))
       .catch(err => console.log(err))
   }
 
   handleClickOpen = (pid) => (
-    this.setState({open: true, post_id: pid})
+    this.setState({ open: true, post_id: pid })
   )
   handleClickClose = () => (
-    this.setState({open: false, post_id: null})
+    this.setState({ open: false, post_id: null })
   )
 
   deletePost = () => {
     const post_id = this.state.post_id
-    Axios.delete('api/delete/post_comments', {data: {post_id: post_id}})
-      .then(() => Axios.delete('/api/delete/post', {data: {post_id: post_id}})
+    Axios.delete('api/delete/post_comments', { data: { post_id: post_id } })
+      .then(() => Axios.delete('/api/delete/post', { data: { post_id: post_id } })
         .then(res => console.log(res)))
       .catch(err => console.log(err))
       .then(() => this.handleClickClose)
@@ -57,9 +57,9 @@ export class Profile extends Component {
     return (
       <div>
         <h1>{props.profile.profile.nickname}</h1>
-        <br/>
-        <img src={props.profile.profile.picture} alt=""/>
-        <br/>
+        <br />
+        <img src={props.profile.profile.picture} alt="" />
+        <br />
         <h4>{props.profile.profile.email}</h4>
         <h5>{props.profile.profile.name}</h5>
         <h6>Email verified</h6>
@@ -69,10 +69,10 @@ export class Profile extends Component {
   }
 
   RenderPost = post => (
-    <Card style={{width: '500px', height: '200px', marginBottom: '10px', paddingBottom: '80px'}}>
+    <Card style={{ width: '500px', height: '200px', marginBottom: '10px', paddingBottom: '80px' }}>
       <CardHeader
         title={
-          <Link to={{pathname: `/post/${post.post.pid}`, state:{post}}}>
+          <Link to={{ pathname: `/post/${post.post.pid}`, state: { post } }}>
             {post.post.title}
           </Link>
         }
@@ -83,18 +83,18 @@ export class Profile extends Component {
               {post.post.date_created}
             </div>
             <div className="FlexRow">
-              <Link to={{pathname: `/edit_post/${post.post.pid}`, state: {post}}}>
+              <Link to={{ pathname: `/edit_post/${post.post.pid}`, state: { post } }}>
                 <button>Edit</button>
               </Link>
               <button onClick={() => this.handleClickOpen(post.post.pid)}>Delete</button>
             </div>
           </div>
         }
-        ></CardHeader>
-        <br/>
-        <CardContent>
-          <span style={{overflow: 'hidden'}}>{post.post.body}</span>
-        </CardContent>
+      ></CardHeader>
+      <br />
+      <CardContent>
+        <span style={{ overflow: 'hidden' }}>{post.post.body}</span>
+      </CardContent>
     </Card>
   )
   render() {
@@ -105,26 +105,26 @@ export class Profile extends Component {
         </div>
         <div>
           {this.props.user_posts
-            ? this.props.user_posts.map(post => 
+            ? this.props.user_posts.map(post =>
               <this.RenderPost post={post} key={post.pid}></this.RenderPost>)
             : null}
         </div>
-        <Dialog 
-            open={this.state.open}
-            onClose={this.handleClickClose}
-            aria-labelledby='alert-dialog-title'
-            aria-describedby='alert-dialog-description'>
-            <DialogTitle id='alert-dialog-title'>Confirm delete?</DialogTitle>
-            <DialogContent>
-              <DialogContentText id='alert-dialog-description'>
-                Deleting Posts
+        <Dialog
+          open={this.state.open}
+          onClose={this.handleClickClose}
+          aria-labelledby='alert-dialog-title'
+          aria-describedby='alert-dialog-description'>
+          <DialogTitle id='alert-dialog-title'>Confirm delete?</DialogTitle>
+          <DialogContent>
+            <DialogContentText id='alert-dialog-description'>
+              Deleting Posts
               </DialogContentText>
-              <DialogActions>
-                <Button onClick={() => this.deletePost}>Agree</Button>
-                <Button onClick={() => this.this.handleClickClose}>Cancel</Button>
-              </DialogActions>
-            </DialogContent>
-          </Dialog>
+            <DialogActions>
+              <Button onClick={() => this.deletePost}>Agree</Button>
+              <Button onClick={() => this.this.handleClickClose}>Cancel</Button>
+            </DialogActions>
+          </DialogContent>
+        </Dialog>
       </div>
     )
   }

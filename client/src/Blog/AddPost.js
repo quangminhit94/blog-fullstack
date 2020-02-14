@@ -10,15 +10,17 @@ export class AddPost extends Component {
     event.preventDefault()
     const user_id = this.props.db_profile[0].uid
     const username = this.props.db_profile[0].username
-    const data = {title: event.target.title.value, 
-                  body: event.target.body.value,
-                  username: username,
-                  uid: user_id}
+    const data = {
+      title: event.target.title.value,
+      body: event.target.body.value,
+      username: username,
+      uid: user_id
+    }
 
     Axios.post('/api/posts/post_to_db', data)
       .then(res => console.log(res))
       .catch(err => console.log(err))
-      .then(setTimeout(() => history.replace('/'), 700) )
+      .then(setTimeout(() => history.replace('/'), 700))
   }
 
   render() {
@@ -51,7 +53,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddPost)

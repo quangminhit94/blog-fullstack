@@ -20,11 +20,11 @@ export class EditPost extends Component {
     })
   }
 
-  handleTitleChange = (event) =>  {
-    this.setState({title: event.target.value})
+  handleTitleChange = (event) => {
+    this.setState({ title: event.target.value })
   }
   handleBodyChange = (event) => {
-    this.setState({body: event.target.value})
+    this.setState({ body: event.target.value })
   }
   handleSubmit = (event) => {
     event.preventDefault()
@@ -43,25 +43,25 @@ export class EditPost extends Component {
       username: username
     }
     console.log(data)
-    
+
     Axios.put("/api/put/post", data)
       .then(res => console.log(res))
       .catch(err => console.log(err))
-      .then(setTimeout(() => history.replace('/profile'), 700 ))
+      .then(setTimeout(() => history.replace('/profile'), 700))
   }
-  
+
   render() {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <TextField 
+          <TextField
             id='title'
             label='title'
             margin='normal'
             value={this.state.title}
             onChange={this.handleTitleChange} />
-          <br/>
-          <TextField 
+          <br />
+          <TextField
             id='body'
             label='body'
             multiline
@@ -69,7 +69,7 @@ export class EditPost extends Component {
             margin='normal'
             value={this.state.body}
             onChange={this.handleBodyChange} />
-            <Button type='submit'>Submit</Button>
+          <Button type='submit'>Submit</Button>
         </form>
         <Button onClick={() => history.goBack()}>Cancel</Button>
       </div>
@@ -82,7 +82,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditPost)

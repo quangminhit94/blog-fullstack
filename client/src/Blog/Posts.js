@@ -10,10 +10,10 @@ import Paper from '@material-ui/core/Paper'
 const RenderPosts = post => (
   <TableRow>
     <TableCell>
-      <Link to={{pathname: `/post/${post.post.pid}`, state:{post}}}>
+      <Link to={{ pathname: `/post/${post.post.pid}`, state: { post } }}>
         <h4>{post.post.title}</h4>
       </Link>
-      <br/>
+      <br />
       <p>{post.post.body}</p>
     </TableCell>
   </TableRow>
@@ -29,7 +29,7 @@ export class Posts extends Component {
   render() {
     return (
       <div>
-        <br/>
+        <br />
         <Link to='/add_post'>
           <Button color='primary'>Add Post</Button>
         </Link>
@@ -44,10 +44,10 @@ export class Posts extends Component {
               </TableRow>
             </TableHead>
             <TableBody>
-              {this.props.posts 
-                ? this.props.posts.map(post => 
-                    <RenderPosts key={post.pid} post={post}></RenderPosts>
-                  ) : null}
+              {this.props.posts
+                ? this.props.posts.map(post =>
+                  <RenderPosts key={post.pid} post={post}></RenderPosts>
+                ) : null}
             </TableBody>
           </Table>
         </Paper>

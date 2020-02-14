@@ -19,7 +19,7 @@ function saveToLocalStorage(state) {
 function loadFromLocalStorage() {
   try {
     const serializedState = localStorage.getItem('state')
-    if(serializedState === null) return undefined
+    if (serializedState === null) return undefined
     return JSON.parse(serializedState)
   } catch (error) {
     console.log(error)
@@ -36,6 +36,6 @@ const store = createStore(rootReducer, persistedState, composeWithDevTools(
 store.subscribe(() => saveToLocalStorage(store.getState()))
 
 ReactDOM.render(<Provider store={store}>
-                  <App />
-                </Provider>, document.getElementById('root'));
+  <App />
+</Provider>, document.getElementById('root'));
 

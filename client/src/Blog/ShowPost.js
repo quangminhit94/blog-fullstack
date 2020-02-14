@@ -17,7 +17,7 @@ export class ShowPost extends Component {
     super(props)
     this.state = {
       open: false,
-      comment:'',
+      comment: '',
       cid: ''
     }
   }
@@ -35,20 +35,20 @@ export class ShowPost extends Component {
   )
 
   componentDidMount() {
-    Axios.get('/api/get/all_post_comments', {params: {post_id: this.props.location.state.post.post.pid}})
+    Axios.get('/api/get/all_post_comments', { params: { post_id: this.props.location.state.post.post.pid } })
       .then(res => this.props.set_comments(res.data))
       .catch(err => console.log(err))
   }
 
   handleClickOpen = (cid, comment) => (
-    this.setState({open: true, comment: comment, cid: cid})
+    this.setState({ open: true, comment: comment, cid: cid })
   )
   handleClose = (cid, comment) => (
-    this.setState({open: false, comment: '', cid: ''})
+    this.setState({ open: false, comment: '', cid: '' })
   )
 
   handleCommentChange = event => (
-    this.setState({comment: event.target.value})
+    this.setState({ comment: event.target.value })
   )
 
   handleSubmit = (event) => {
@@ -56,11 +56,11 @@ export class ShowPost extends Component {
     const user_id = this.props.db_profile[0].uid
     const post_id = this.props.location.state.post.post.pid
     const username = this.props.db_profile[0].username
-    const data = {comment: event.target.comment.value, post_id: post_id, user_id: user_id, username: username}
+    const data = { comment: event.target.comment.value, post_id: post_id, user_id: user_id, username: username }
     Axios.post('/api/posts/comment_to_db', data)
       .then(res => console.log(res))
       .catch(err => console.log(err))
-      .then(setTimeout(() => history.replace('/'), 700) )
+      .then(setTimeout(() => history.replace('/'), 700))
   }
 
   handleUpdate = () => {
@@ -70,23 +70,23 @@ export class ShowPost extends Component {
     const post_id = this.props.location.state.post.post_id
     const username = this.props.db_profile[0].username
 
-    const data = {cid: cid, comment: comment, post_id: post_id, user_id: user_id, username: username}
+    const data = { cid: cid, comment: comment, post_id: post_id, user_id: user_id, username: username }
     Axios.put('/api/put/comment_to_db', data)
       .then(res => console.log(res))
       .catch(err => console.log(err))
-      .then(setTimeout(() => history.replace('/'), 700) )
-    
-    this.setState({open: false})
+      .then(setTimeout(() => history.replace('/'), 700))
+
+    this.setState({ open: false })
   }
 
   handleDeleteComment = () => {
     const cid = this.state.cid
-    Axios.delete('/api/delete/comment', {data: {cid: cid}})
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
-    .then(setTimeout(() => history.replace('/'), 700) )
+    Axios.delete('/api/delete/comment', { data: { cid: cid } })
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
+      .then(setTimeout(() => history.replace('/'), 700))
 
-    this.setState({open: false})
+    this.setState({ open: false })
   }
   render() {
     return (
@@ -100,10 +100,10 @@ export class ShowPost extends Component {
         <div>
           <h2>Comments</h2>
           {this.props.comments
-            ? this.props.comments.map(comment => 
-              <this.RenderComments 
-                comment={comment} 
-                cur_user_id={this.props.db_profile[0].uid} 
+            ? this.props.comments.map(comment =>
+              <this.RenderComments
+                comment={comment}
+                cur_user_id={this.props.db_profile[0].uid}
                 key={comment.cid}></this.RenderComments>)
             : null}
         </div>
@@ -118,7 +118,7 @@ export class ShowPost extends Component {
           </form>
         </div>
         <div>
-          <Dialog 
+          <Dialog
             open={this.state.open}
             onClose={this.handleClose}
             aria-labelledby='alert-dialog-title'
@@ -126,7 +126,7 @@ export class ShowPost extends Component {
             <DialogTitle id='alert-dialog-title'>Edit Comment</DialogTitle>
             <DialogContent>
               <DialogContentText id='alert-dialog-description'>
-                <input type='text' value={this.state.comment} onChange={this.handleCommentChange}/>
+                <input type='text' value={this.state.comment} onChange={this.handleCommentChange} />
               </DialogContentText>
               <DialogActions>
                 <Button onClick={() => this.handleUpdate()}>Agree</Button>
@@ -138,7 +138,7 @@ export class ShowPost extends Component {
         </div>
       </div>
     )
-  }w
+  } w
 }
 
 const mapStateToProps = (state) => ({

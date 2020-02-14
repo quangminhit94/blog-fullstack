@@ -9,11 +9,11 @@ class AuthCheck extends Component {
   sendProfileToDb = (profile) => {
     const data = profile
     Axios.post('api/posts/user_profile_to_db', data)
-      .then(Axios.get('api/get/user_profile_from_db', {params: {email: profile.profile.email}})
-      .then(res => this.props.setDbProfile(res.data)) )
+      .then(Axios.get('api/get/user_profile_from_db', { params: { email: profile.profile.email } })
+        .then(res => this.props.setDbProfile(res.data)))
   }
   componentDidMount() {
-    if(this.props.auth.isAuthenticated()) {
+    if (this.props.auth.isAuthenticated()) {
       this.props.loginSuccess()
       this.props.addProfile(this.props.auth.userProfile)
       this.sendProfileToDb(this.props.auth.userProfile)
@@ -30,14 +30,14 @@ class AuthCheck extends Component {
   render() {
     return (
       <div>
-        
+
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  
+
 })
 
 const mapDispatchToProps = (dispatch) => {

@@ -21,7 +21,7 @@ class App extends Component {
 
   renderHelloUsingAxios() {
     Axios.get('/hello')
-      .then(res => this.setState({hello: res.data}))
+      .then(res => this.setState({ hello: res.data }))
       .catch(err => console.error(err))
   }
 
@@ -33,9 +33,9 @@ class App extends Component {
 
   fetchDataUsingFetch = async () => {
     await fetch('https://jsonplaceholder.typicode.com/posts')
-            .then(res => res.json())
-            .then(json => console.table(json))
-            .catch(err => console.error(err))
+      .then(res => res.json())
+      .then(json => console.table(json))
+      .catch(err => console.error(err))
   }
 
   render() {
@@ -44,7 +44,7 @@ class App extends Component {
         {this.state.hello ? <div>{this.state.hello}</div> : null}
         {/* <Container1 nickname="Cat"></Container1> */}
         {/* <Component1 name="moe" age="25"></Component1> */}
-        <br/>
+        <br />
         React
         <Routes />
       </div>

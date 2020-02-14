@@ -6,12 +6,12 @@ import { connect } from 'react-redux';
 
 class Form1 extends Component {
 
-  state ={
+  state = {
     value: ''
   }
 
   handleChange = (event) => (
-    this.setState({value: event.target.value})
+    this.setState({ value: event.target.value })
   )
 
   handleSubmit = (event) => {
@@ -34,7 +34,8 @@ class Form1 extends Component {
         <h3>Redux State:</h3>
         <p>{this.props.user_text}</p>
       </div>
-    )}
+    )
+  }
 }
 
 

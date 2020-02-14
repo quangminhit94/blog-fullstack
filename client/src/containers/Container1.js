@@ -4,7 +4,7 @@ import * as ACTIONS from '../store/actions/actions'
 import { connect } from 'react-redux'
 
 class Container1 extends Component {
-  
+
   render() {
     const user_text = "User Text"
     return (
