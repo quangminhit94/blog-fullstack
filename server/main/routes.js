@@ -48,7 +48,7 @@ router.delete('/api/delete/post_comments', (req, res, next) => {
 router.delete('/api/delete/post', (req, res, next) => {
   const post_id = req.body.post_id
   pool.query(`DELETE FROM posts
-              WHERE post_id = $1`, [post_id], (q_error, q_response) => {
+              WHERE pid = $1`, [post_id], (q_error, q_response) => {
     if (q_error) return next(q_error)
     res.json(q_response.rows)
   })
@@ -99,7 +99,6 @@ router.get('/api/get/all_post_comments', (req, res, next) => {
  * USER PROFILE SECTION
  */
 router.post('/api/posts/user_profile_to_db', (req, res, next) => {
-  console.log(req.body)
   const values = [req.body.profile.nickname, req.body.profile.email, req.body.profile.email_verified]
   pool.query(`INSERT INTO users(username, email, email_verified, date_created)
               VALUES($1, $2, $3, NOW())

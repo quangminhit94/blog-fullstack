@@ -46,11 +46,12 @@ export class Profile extends Component {
 
   deletePost = () => {
     const post_id = this.state.post_id
-    Axios.delete('api/delete/post_comments', { data: { post_id: post_id } })
+    console.log(post_id)
+    Axios.delete('/api/delete/post_comments', { data: { post_id: post_id } })
       .then(() => Axios.delete('/api/delete/post', { data: { post_id: post_id } })
         .then(res => console.log(res)))
       .catch(err => console.log(err))
-      .then(() => this.handleClickClose)
+      .then(() => this.handleClickClose())
       .then(() => setTimeout(() => history.replace('/'), 700))
   }
   RenderProfile = (props) => {
@@ -120,8 +121,8 @@ export class Profile extends Component {
               Deleting Posts
               </DialogContentText>
             <DialogActions>
-              <Button onClick={() => this.deletePost}>Agree</Button>
-              <Button onClick={() => this.this.handleClickClose}>Cancel</Button>
+              <Button onClick={this.deletePost}>Agree</Button>
+              <Button onClick={this.handleClickClose}>Cancel</Button>
             </DialogActions>
           </DialogContent>
         </Dialog>
