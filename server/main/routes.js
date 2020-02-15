@@ -31,6 +31,7 @@ router.put('/api/put/post', (req, res, next) => {
   const values = [req.body.title, req.body.body, req.body.uid, req.body.pid, req.body.username]
   pool.query(`UPDATE posts SET title = $1, body = $2, user_id = $3, author = $5, date_created = NOW()
               WHERE pid = $4`, values, (q_error, q_response) => {
+    if (q_error) return next(q_error)
     res.json(q_response.rows)
   })
 })
@@ -39,8 +40,8 @@ router.delete('/api/delete/post_comments', (req, res, next) => {
   const post_id = req.body.post_id
   pool.query(`DELETE FROM comments
               WHERE post_id = $1`, [post_id], (q_error, q_response) => {
+    if (q_error) return next(q_error)
     res.json(q_response.rows)
-    console.log(q_error)
   })
 })
 
@@ -48,8 +49,8 @@ router.delete('/api/delete/post', (req, res, next) => {
   const post_id = req.body.post_id
   pool.query(`DELETE FROM posts
               WHERE post_id = $1`, [post_id], (q_error, q_response) => {
+    if (q_error) return next(q_error)
     res.json(q_response.rows)
-    console.log(q_error)
   })
 })
 
@@ -60,8 +61,8 @@ router.post('/api/posts/comment_to_db', (req, res, next) => {
   const values = [req.body.comment, req.body.user_id, req.body.username, req.body.post_id]
   pool.query(`INSERT INTO comments(comment, user_id, author, post_id, date_created)
               VALUES($1, $2, $3, $4, NOW())`, values, (q_error, q_response) => {
+    if (q_error) return next(q_error)
     res.json(q_response.rows)
-    console.log(q_error)
   })
 })
 
@@ -71,8 +72,8 @@ router.put('/api/put/comment_to_db', (req, res, next) => {
   pool.query(`UPDATE comments SET 
               comment = $1, user_id = $2, post_id = $3, author = $4, date_created = NOW()
               WHERE cid = $5`, values, (q_error, q_response) => {
+    if (q_error) return next(q_error)
     res.json(q_response.rows)
-    console.log(q_error)
   })
 })
 
@@ -80,8 +81,8 @@ router.delete('/api/delete/comment', (req, res, next) => {
   const cid = req.body.cid
   pool.query(`DELETE FROM comments
               WHERE cid = $1`, [cid], (q_error, q_response) => {
+    if (q_error) return next(q_error)
     res.json(q_response.rows)
-    console.log(q_error)
   })
 })
 
@@ -89,8 +90,8 @@ router.get('/api/get/all_post_comments', (req, res, next) => {
   const post_id = req.query.post_id
   pool.query(`SELECT * FROM comments
               WHERE post_id = $1`, [post_id], (q_error, q_response) => {
+    if (q_error) return next(q_error)
     res.json(q_response.rows)
-    console.log(q_error)
   })
 })
 
@@ -98,13 +99,15 @@ router.get('/api/get/all_post_comments', (req, res, next) => {
  * USER PROFILE SECTION
  */
 router.post('/api/posts/user_profile_to_db', (req, res, next) => {
+  console.log(req.body)
   const values = [req.body.profile.nickname, req.body.profile.email, req.body.profile.email_verified]
   pool.query(`INSERT INTO users(username, email, email_verified, date_created)
               VALUES($1, $2, $3, NOW())
-              ON CONFLICT DO NOTHING`, values, 
-              (q_error, q_response) => {
-    res.json(q_response.rows)
-  })
+              ON CONFLICT DO NOTHING`, values,
+    (q_error, q_response) => {
+      if (q_error) return next(q_error)
+      res.json(q_response.rows)
+    })
 })
 
 router.get('/api/get/user_profile_from_db', (req, res, next) => {
