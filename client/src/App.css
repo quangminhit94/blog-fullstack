@@ -35,12 +35,6 @@ FlexProfileDrawerRow {
   animation-timing-function: ease-in;
   animation-duration: 1s
 }
-.FadeOutComment {
-  opacity: 1;
-  animation-name: fadeInRight;
-  animation-timing-function: linear;
-  animation-duration: 1s
-}
 
 
 
@@ -55,7 +49,7 @@ FlexProfileDrawerRow {
 }
 
 .FadeOutComment {
-  animation-name: fadeOut;
+  animation-name: fadeOutRight;
   animation-timing-function: linear;
   animation-duration: 2s
 }
