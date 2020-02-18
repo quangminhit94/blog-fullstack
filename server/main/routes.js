@@ -126,4 +126,14 @@ router.get('/api/get/user_posts', (req, res, next) => {
   })
 })
 
+router.put('/api/put/likes', (req, res, next) => {
+  const uid = [req.body.uid]
+  const post_id = req.body.post_id
+  const values = [uid, post_id]
+
+  // pool.query(`UPDATE posts
+  //             SET like_user_id = like_user_id || $1, likes = likes + 1
+  //             WHERE NOT(like_user_id @> $1)`)
+})
+
 module.exports = router
