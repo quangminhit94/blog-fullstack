@@ -5,6 +5,7 @@ import * as ACTIONS from '../store/actions/actions'
 import Axios from 'axios'
 import moment from 'moment';
 import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField'
 
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -35,11 +36,23 @@ export class Posts extends Component {
     Axios.get('/api/get/all_posts')
       .then(res => this.props.set_posts(res.data))
       .then(() => this.add_posts_to_state(this.props.posts))
-      .catch(err => console.log(err))
-      .then()
+      .catch(err => console.error(err))
   }
   handleTransition = () => {
     setTimeout(() => this.setState({ opacity: 1 }), 400)
+  }
+  add_search_posts_to_state = (posts) => {
+    this.setState({ posts_search: [] })
+    this.setState({ posts_search: [...posts] })
+    this.animate_search_posts()
+  }
+  animate_search_posts = () => {
+    this.setState({ posts_search_motion: [] })
+    let i = 1
+    this.state.posts_search.map(post => {  // eslint-disable-line
+      setTimeout(() => { this.setState({ posts_search_motion: [...this.state.posts_search_motion, post] }) }, 400 * i);
+      i++;
+    })
   }
   add_posts_to_state = (posts) => {
     this.setState({ posts: [...posts] })
@@ -71,6 +84,15 @@ export class Posts extends Component {
 
     setTimeout(() => { this.slice_posts() }, 50)
     setTimeout(() => { this.animate_posts() }, 100)
+  }
+
+  handleSearch = (event) => {
+    const search_query = event.target.value
+
+    Axios.get('/api/get/search_posts', { params: { search_query: search_query } })
+      .then(res => this.props.posts_success(res.data))
+      .then(() => this.add_search_posts_to_state(this.props.search_posts))
+      .catch(err => console.error(err))
   }
 
   RenderPosts = post => (
@@ -120,6 +142,20 @@ export class Posts extends Component {
           </Link>}
 
         <div>
+          <TextField
+            id='search'
+            label='Search'
+            margin='normal'
+            onChange={this.handleSearch}></TextField>
+        </div>
+        <div>
+          {this.state.posts_search
+            ? this.state.posts_search_motion.map(post =>
+              <this.RenderPosts key={post.pid} post={post}></this.RenderPosts>
+            ) : null}
+        </div>
+
+        <div>
           <h1>All Posts</h1>
           {this.state.posts
             ? this.state.posts_motion.map(post =>
@@ -141,11 +177,14 @@ export class Posts extends Component {
 
 const mapStateToProps = (state) => ({
   posts: state.posts_reducer.posts,
-  is_authenticated: state.auth_reducer.is_authenticated
+  is_authenticated: state.auth_reducer.is_authenticated,
+  search_posts: state.posts_reducer.search_posts
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  set_posts: posts => dispatch(ACTIONS.fetchDbPosts(posts))
+  set_posts: posts => dispatch(ACTIONS.fetchDbPosts(posts)),
+  posts_success: posts => dispatch(ACTIONS.fetchSearchPosts(posts)),
+  posts_failure: () => dispatch(ACTIONS.removeSearchPosts())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Posts)

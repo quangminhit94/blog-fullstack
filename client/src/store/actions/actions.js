@@ -83,6 +83,19 @@ export const removeUserPosts = () => {
 	}
 }
 
+export const fetchSearchPosts = (payload) => {
+	return {
+		type: ACTION_TYPES.SEARCH_POSTS_SUCCESS,
+		payload
+	}
+}
+
+export const removeSearchPosts = () => {
+	return {
+		type: ACTION_TYPES.SEARCH_POSTS_FAILURE
+	}
+}
+
 export const fetchPostComments = (payload) => {
 	return {
 		type: ACTION_TYPES.FETCH_POST_COMMENTS,

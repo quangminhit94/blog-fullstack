@@ -3,7 +3,8 @@ import * as ACTION_TYPES from '../actions/action_types'
 export const initialState = {
   posts: [],
   comments: [],
-  user_posts: []
+  user_posts: [],
+  search_posts: []
 }
 
 
@@ -29,6 +30,16 @@ const PostsReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         user_posts: []
+      }
+    case ACTION_TYPES.SEARCH_POSTS_SUCCESS:
+      return {
+        ...state,
+        search_posts: payload
+      }
+    case ACTION_TYPES.SEARCH_POSTS_FAILURE:
+      return {
+        ...state,
+        search_posts: []
       }
     case ACTION_TYPES.FETCH_POST_COMMENTS:
       return {

@@ -17,15 +17,41 @@ router.get('/api/get/all_posts', (req, res, next) => {
   })
 })
 
+// router.post('/api/posts/post_to_db', (req, res, next) => {
+//   const values = [req.body.title, req.body.body, req.body.uid, req.body.username]
+//   pool.query(`INSERT INTO posts (title, body, user_id, author, date_created)
+//               VALUES($1, $2, $3, $4, NOW())`, values, (q_error, q_response) => {
+//     // with next() basically better version to easy handing asynchronous error cause q_error is asynchronous of express
+//     if (q_error) return next(q_error)
+//     res.json(q_response.rows)
+//   })
+// });
+
 router.post('/api/posts/post_to_db', (req, res, next) => {
-  const values = [req.body.title, req.body.body, req.body.uid, req.body.username]
-  pool.query(`INSERT INTO posts (title, body, user_id, author, date_created)
-              VALUES($1, $2, $3, $4, NOW())`, values, (q_error, q_response) => {
+  const body_vector = String(req.body.body)
+  const title_vector = String(req.body.title)
+  const user_vector = String(req.body.username)
+
+  const search_vector = [title_vector, body_vector, user_vector]
+  const values = [req.body.title, req.body.body, search_vector, req.body.uid, req.body.username]
+  pool.query(`INSERT INTO posts (title, body, search_vector, user_id, author, date_created)
+              VALUES($1, $2, to_tsvector($3), $4, $5, NOW())`, values, (q_error, q_response) => {
     // with next() basically better version to easy handing asynchronous error cause q_error is asynchronous of express
     if (q_error) return next(q_error)
     res.json(q_response.rows)
   })
 });
+
+router.get('/api/get/search_posts', (req, res, next) => {
+  const search_query = String(req.query.search_query)
+  console.log(search_query)
+  pool.query(`SELECT * FROM posts
+              WHERE search_vector @@ to_tsquery($1)`,
+    [search_query], (q_error, q_response) => {
+      if (q_error) return next(q_error)
+      res.json(q_response.rows)
+    })
+})
 
 router.put('/api/put/post', (req, res, next) => {
   const values = [req.body.title, req.body.body, req.body.uid, req.body.pid, req.body.username]

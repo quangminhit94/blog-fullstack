@@ -259,3 +259,15 @@ export const success = () => {
 - [x] Write query like function: How check like of user at specific post and already like or not
 
 ## 36 Full stack search
+
+Will do with Express and PSQL's built in TS functionality. TS stands for Text Search
+
+**TSvector**: A list of lexemes. Lexemes is a list of words that allow you to merge different variants of the word. Such as past tense or pluralized version of the word
+
+Example: `Dogs` will come up in a search for 'Dog'
+
+**TSquery**: Allows you to search and compare with lexemes
+
+Example: `Dog` will be the TSquery that will be compared to the TSvector
+
+TS is much more effective than the LIKE% solution
