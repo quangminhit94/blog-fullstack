@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import Button from '@material-ui/core/Button'
 
 class Header extends Component {
 
@@ -30,8 +31,8 @@ class Header extends Component {
           Private Route
           </Link>
         {!this.props.is_authenticated
-          ? <button onClick={() => this.props.auth.login()}>Login</button>
-          : <button onClick={() => this.props.auth.logout()}>Logout</button>
+          ? <Button color='secondary' variant='outlined' onClick={() => this.props.auth.login()}>Login</Button>
+          : <Button color='primary' variant='outlined' onClick={() => this.props.auth.logout()}>Logout</Button>
         }
         <br />
         <br />

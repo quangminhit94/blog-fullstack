@@ -110,10 +110,14 @@ export class Posts extends Component {
   render() {
     return (
       <div>
-        <br />
-        <Link to='/add_post'>
-          <Button color='primary'>Add Post</Button>
-        </Link>
+
+        {this.props.is_authenticated
+          ? <Link to='/add_post'>
+            <Button color='secondary' variant='contained'>Add Post</Button>
+          </Link>
+          : <Link to='/signup'>
+            <Button color='primary' variant='contained'>Sign Up to Add Posts</Button>
+          </Link>}
 
         <div>
           <h1>All Posts</h1>
@@ -136,7 +140,8 @@ export class Posts extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  posts: state.posts_reducer.posts
+  posts: state.posts_reducer.posts,
+  is_authenticated: state.auth_reducer.is_authenticated
 })
 
 const mapDispatchToProps = (dispatch) => ({

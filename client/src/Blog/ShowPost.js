@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import * as ACTIONS from '../store/actions/actions'
 import Axios from 'axios'
 import history from '../utils/history'
+
+import { Link } from 'react-router-dom'
 import TextField from '@material-ui/core/TextField'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
@@ -27,7 +29,7 @@ export class ShowPost extends Component {
       cur_user_id: null,
       likes: this.props.location.state.post.post.likes,
       like_user_ids: this.props.location.state.post.post.like_user_id,
-      like_post: true,
+      like_post: true, // if user already like the post, this will be false
     }
   }
   RenderComments = comment => (
@@ -187,6 +189,20 @@ export class ShowPost extends Component {
 
     this.handleCommentDelete(cid)
   }
+
+  handleLikes = () => {
+    const user_id = this.props.db_profile[0].uid
+    const post_id = this.props.location.state.post.post.pid
+
+    const data = { uid: user_id, post_id: post_id }
+    console.log(this.props.location)
+    Axios.put('/api/put/likes', data)
+      .then(!this.state.like_user_ids.includes(user_id) && this.state.like_post
+        ? this.setState({ likes: this.state.likes + 1 })
+        : null)
+      .then(this.setState({ like_post: false }))
+      .catch(err => console.log(err))
+  }
   render() {
     return (
       <div>
@@ -195,6 +211,15 @@ export class ShowPost extends Component {
           <h4>{this.props.location.state.post.post.title}</h4>
           <p>{this.props.location.state.post.post.body}</p>
           <p>{this.props.location.state.post.post.author}</p>
+          <button
+            style={{ cursor: 'pointer' }}
+            onClick={this.props.isAuthenticated
+              ? () => this.handleLikes()
+              : () => history.replace('/signup')}
+          >
+            <i className="material-icons"> thumb_up</i>
+            <small className="notification-num-showpost">{this.state.likes}</small>
+          </button>
         </div>
         <div>
           <h2>All Comments:</h2>
@@ -213,7 +238,12 @@ export class ShowPost extends Component {
               label='Comment'
               margin='normal' />
             <br />
-            <button type='submit'>Submit</button>
+            {this.props.is_authenticated
+              ? <Button type='submit' color='primary' variant='contained'>Submit</Button>
+              : <Link to='/signup'>
+                <Button color='primary' variant='contained'>Sign Up to Comment</Button>
+              </Link>}
+
           </form>
         </div>
         <div>
@@ -242,7 +272,8 @@ export class ShowPost extends Component {
 
 const mapStateToProps = (state) => ({
   comments: state.posts_reducer.comments,
-  db_profile: state.auth_reducer.db_profile
+  db_profile: state.auth_reducer.db_profile,
+  isAuthenticated: state.auth_reducer.is_authenticated
 })
 
 const mapDispatchToProps = (dispatch) => ({

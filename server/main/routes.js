@@ -122,18 +122,23 @@ router.get('/api/get/user_posts', (req, res, next) => {
   pool.query(`SELECT * FROM posts
               WHERE user_id = $1`, [user_id], (q_error, q_response) => {
     res.json(q_response.rows)
-    console.log(q_error)
   })
 })
 
 router.put('/api/put/likes', (req, res, next) => {
   const uid = [req.body.uid]
-  const post_id = req.body.post_id
+  const post_id = String(req.body.post_id)
   const values = [uid, post_id]
 
-  // pool.query(`UPDATE posts
-  //             SET like_user_id = like_user_id || $1, likes = likes + 1
-  //             WHERE NOT(like_user_id @> $1)`)
+  pool.query(`UPDATE posts
+              SET like_user_id = like_user_id || $1, likes = likes + 1
+              WHERE NOT(like_user_id @> $1)
+              AND pid = $2`,
+    values, (q_error, q_response) => {
+      if (q_error) return next(q_error)
+      res.json(q_response.rows)
+    }
+  )
 })
 
 module.exports = router

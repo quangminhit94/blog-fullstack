@@ -49,7 +49,7 @@ const PrivateRoute = ({ component: Component, auth }) => {
   return (
     <Route render={props => auth.isAuthenticated() === true
       ? <Component auth={auth} {...props} />
-      : <Redirect to={{ pathname: '/redirect' }} />
+      : <Redirect to={{ pathname: '/signup' }} />
     }
     />
   )

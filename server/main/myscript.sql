@@ -14,4 +14,10 @@ ALTER TABLE public.posts
 
 -- EDIT DEFAUT TYPE OF COLUMN
 ALTER TABLE public.posts 
-    ALTER COLUMN like_user_id SET DEFAULT array[]::INT[];
+  ALTER COLUMN like_user_id SET DEFAULT array[]::INT[];
+
+-- CONCATE ARRAY
+UPDATE posts
+  SET like_user_id = like_user_id || $1, likes = likes + 1
+-- USER ONLY INCREASE LIKE AT ONCE, @> MEANS CONTAINS 
+  WHERE NOT(like_user_id @> $1) 
