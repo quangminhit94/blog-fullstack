@@ -21,7 +21,7 @@ import AddPost from './Blog/AddPost';
 import ShowPost from './Blog/ShowPost';
 import EditPost from './Blog/EditPost';
 
-// import ShowUser from './Profile/showuser';
+import ShowUser from './Profile/showuser';
 // import SendMessage from './Profile/sendmessage';
 // import ShowMessages from './Profile/showmessages';
 // import ReplytoMessage from './Profile/replytomessage';
@@ -84,10 +84,10 @@ class Routes extends Component {
               <Route path='/redirect' component={UnAuthRedirect} />
               {/* <Route path='/renderlist' component={RenderList} /> */}
 
-              {/* <Route path="/user/:name" component={ ShowUser } />
-            <PrivateRoute path="/sendmessage"  auth={auth} component={ SendMessage } />
-            <PrivateRoute path="/showmessages/:id"  auth={auth}  component={ ShowMessages } />
-            <PrivateRoute path="/replytomessage"  auth={auth}  component={ ReplytoMessage } /> */}
+              <Route path="/user/:name" component={ShowUser} />
+              {/* <PrivateRoute path="/sendmessage"  auth={auth} component={ SendMessage } /> */}
+              {/* <PrivateRoute path="/showmessages/:id"  auth={auth}  component={ ShowMessages } /> */}
+              {/* <PrivateRoute path="/replytomessage"  auth={auth}  component={ ReplytoMessage } /> */}
 
               <Route path='/posts' component={Posts} />
               <Route path='/post/:pid' component={ShowPost} />
