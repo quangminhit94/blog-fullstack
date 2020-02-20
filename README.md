@@ -271,3 +271,18 @@ Example: `Dogs` will come up in a search for 'Dog'
 Example: `Dog` will be the TSquery that will be compared to the TSvector
 
 TS is much more effective than the LIKE% solution
+
+## 37 Other user profile
+
+## 38 Custom Messaging
+
+### 3 Component
+
+SendMessage: A form to submit the message with the username of the user you want to message. The username of the recipient of the message will be passed down as a prop.
+
+ShowMessages: A component to display all the messages for a user. Will be accessed through the profile component. Deleting the messages will also be handled here
+
+ReplyToMessage: A component to reply to messages. Will be very similar to the SendMessage component and the username of the person that sent the message will be passed down as a prop
+
+Messages will be stored in the database in their own table and reference the a user through the username. Therefore querying the database through node.js will be done through usernames, which we will passing to an axios API request.
+

@@ -22,9 +22,9 @@ import ShowPost from './Blog/ShowPost';
 import EditPost from './Blog/EditPost';
 
 import ShowUser from './Profile/ShowUser';
-// import SendMessage from './Profile/sendmessage';
-// import ShowMessages from './Profile/showmessages';
-// import ReplytoMessage from './Profile/replytomessage';
+import SendMessage from './Profile/SendMessage';
+import ShowMessages from './Profile/ShowMessages';
+import ReplytoMessage from './Profile/ReplyToMessage';
 
 import * as ACTIONS from './store/actions/actions';
 
@@ -85,9 +85,9 @@ class Routes extends Component {
               {/* <Route path='/renderlist' component={RenderList} /> */}
 
               <Route path="/user/:name" component={ShowUser} />
-              {/* <PrivateRoute path="/sendmessage"  auth={auth} component={ SendMessage } /> */}
-              {/* <PrivateRoute path="/showmessages/:id"  auth={auth}  component={ ShowMessages } /> */}
-              {/* <PrivateRoute path="/replytomessage"  auth={auth}  component={ ReplytoMessage } /> */}
+              <PrivateRoute path="/send_message" auth={auth} component={SendMessage} />
+              <PrivateRoute path="/show_messages/:id" auth={auth} component={ShowMessages} />
+              <PrivateRoute path="/reply_to_message" auth={auth} component={ReplytoMessage} />
 
               <Route path='/posts' component={Posts} />
               <Route path='/post/:pid' component={ShowPost} />

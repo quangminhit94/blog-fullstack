@@ -29,3 +29,13 @@ CREATE TABLE comments
   post_id INT REFERENCES posts(pid),
   date_created TIMESTAMP
 );
+
+CREATE TABLE messages
+(
+  mid SERIAL PRIMARY KEY,
+  message_sender VARCHAR(255) REFERENCES users(username),
+  message_to VARCHAR(255) REFERENCES users(username),
+  message_title VARCHAR(255),
+  message_body VARCHAR,
+  date_created TIMESTAMP
+);

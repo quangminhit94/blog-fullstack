@@ -105,6 +105,12 @@ export class Profile extends Component {
           <this.RenderProfile profile={this.props.profile}></this.RenderProfile>
         </div>
         <div>
+          {console.log(this.state)}
+          <Link to={{ pathname: `/show_messages/${this.state.user_id}` }}>
+            <Button variant='contained' color='primary' type='submit'>Show Messages</Button>
+          </Link>
+        </div>
+        <div>
           {this.props.user_posts
             ? this.props.user_posts.map(post =>
               <this.RenderPost post={post} key={post.pid}></this.RenderPost>)

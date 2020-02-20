@@ -58,6 +58,13 @@ export class ShowUser extends Component {
       <div className="FlexRow">
         <h1>{props.profile.username}</h1>
       </div>
+      <div className="FlexRow">
+        <Link to={{ pathname: '/send_message/', state: { props } }}>
+          <Button variant='contained' color='secondary' type='submit'>
+            Send Message
+          </Button>
+        </Link>
+      </div>
     </div>
   )
 

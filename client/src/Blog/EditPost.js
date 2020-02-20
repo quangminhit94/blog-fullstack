@@ -69,7 +69,7 @@ export class EditPost extends Component {
             margin='normal'
             value={this.state.body}
             onChange={this.handleBodyChange} />
-          <Button type='submit'>Submit</Button>
+          <Button type='submit' variant='outlined' color='secondary'>Submit</Button>
         </form>
         <Button onClick={() => history.goBack()}>Cancel</Button>
       </div>
