@@ -12,15 +12,16 @@ import Button from '@material-ui/core/Button'
 
 export class ShowUser extends Component {
   componentDidMount() {
-    const username = this.props.location.post.post.author
+    console.log(this.props.location)
+    const username = this.props.location.state.post.post.author
     Axios.get('/api/get/other_user_profile_from_db', { params: { username: username } })
       .then(res => this.props.set_profile(res.data))
       .catch(err => console.error(err))
-    Axios.get('/api/get/other_user_posts', { params: { username: username } })
+    Axios.get('/api/get/other_user_posts_from_db', { params: { username: username } })
       .then(res => this.props.set_db_posts(res.data))
       .catch(err => console.error(err))
 
-    window.scroll({ top: 0, left: 0 })
+    window.scrollTo({ top: 0, left: 0 })
   }
   RenderPosts = post => (
     <div className="CardStyles">
@@ -65,7 +66,7 @@ export class ShowUser extends Component {
       <div>
         <div className="FlexRow">
           {this.props.user_profile
-            ? <this.RenderProfile profile={this.props.profile[0]} />
+            ? <this.RenderProfile profile={this.props.user_profile[0]} />
             : null}
         </div>
         <div>
@@ -93,8 +94,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  set_db_posts: post => dispatch(ACTIONS.get_other_user_posts(post)),
-  set_profile: profile => dispatch(ACTIONS.get_other_user_db_profile(profile))
+  set_db_posts: post => dispatch(ACTIONS.getOtherUserDbPosts(post)),
+  set_profile: profile => dispatch(ACTIONS.getOtherUserDbProfile(profile))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShowUser)

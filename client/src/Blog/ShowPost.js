@@ -238,7 +238,8 @@ export class ShowPost extends Component {
               label='Comment'
               margin='normal' />
             <br />
-            {this.props.is_authenticated
+            {console.log(this.props)}
+            {this.props.isAuthenticated
               ? <Button type='submit' color='primary' variant='contained'>Submit</Button>
               : <Link to='/signup'>
                 <Button color='primary' variant='contained'>Sign Up to Comment</Button>

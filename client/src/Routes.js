@@ -21,7 +21,7 @@ import AddPost from './Blog/AddPost';
 import ShowPost from './Blog/ShowPost';
 import EditPost from './Blog/EditPost';
 
-import ShowUser from './Profile/showuser';
+import ShowUser from './Profile/ShowUser';
 // import SendMessage from './Profile/sendmessage';
 // import ShowMessages from './Profile/showmessages';
 // import ReplytoMessage from './Profile/replytomessage';

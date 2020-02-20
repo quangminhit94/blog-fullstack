@@ -108,3 +108,29 @@ export const removePostComments = () => {
 		type: ACTION_TYPES.REMOVE_POST_COMMENTS
 	}
 }
+
+export const getOtherUserDbProfile = (profile) => {
+	return {
+		type: ACTION_TYPES.SET_OTHER_USER_DB_PROFILE,
+		payload: profile
+	}
+}
+
+export const removeOtherUserDbProfile = () => {
+	return {
+		type: ACTION_TYPES.REMOVE_OTHER_USER_DB_PROFILE
+	}
+}
+
+export const getOtherUserDbPosts = (post) => {
+	return {
+		type: ACTION_TYPES.SET_OTHER_USER_DB_POSTS,
+		payload: post
+	}
+}
+
+export const removeOtherUserDbPosts = () => {
+	return {
+		type: ACTION_TYPES.REMOVE_OTHER_USER_DB_POSTS
+	}
+}
