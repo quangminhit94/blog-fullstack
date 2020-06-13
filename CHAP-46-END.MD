@@ -109,7 +109,7 @@ Our last octet is all 0s, so as normal it can be any number between 0-255
 
 All together this means that our subnet can be any address that is between 10.11.0.0 and 10.11.31.255
 
-# 50-56
+# 50-end
 
 cd bin/
 sudo nano
@@ -128,3 +128,36 @@ sudo curl https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | 
 
 sudo chmod 777
 
+npm install -g pm2
+
+pm2 start main/app.js
+
+pm2 start main/app.js -i max
+
+sudo amazon-linux-extras install nginx1.12
+
+<!-- Write to nginx.conf -->
+location / {
+    root /fullstack-react-express-psql/server/build;
+    index index.html
+    try_file $uri /index.html;
+}
+location /api {
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Nginx-Proxy true;
+    proxy_pass http://3.14.143.161:5010;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;
+}
+
+
+<!-- test nginx -->
+sudo nginx -t
+
+sudo systemctl restart nginx
+
+sudo nano /var/log/nginx/error.log
