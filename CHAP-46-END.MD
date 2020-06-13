@@ -136,6 +136,8 @@ pm2 start main/app.js -i max
 
 sudo amazon-linux-extras install nginx1.12
 
+cd /etc/nginx
+
 <!-- Write to nginx.conf -->
 location / {
     root /fullstack-react-express-psql/server/build;
@@ -161,3 +163,7 @@ sudo nginx -t
 sudo systemctl restart nginx
 
 sudo nano /var/log/nginx/error.log
+
+<!-- Maintain command -->
+cd /fullstack-react-express-psql
+sudo git pull
