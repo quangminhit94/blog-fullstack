@@ -108,3 +108,23 @@ Since the first 2 octets are all 1s both the octets are used as the network pref
 Our last octet is all 0s, so as normal it can be any number between 0-255
 
 All together this means that our subnet can be any address that is between 10.11.0.0 and 10.11.31.255
+
+# 50-56
+
+cd bin/
+sudo nano
+
+ls
+
+cd /
+
+sudo amazon-linux-extras install postgres9.6
+
+psql -d dbname3 -h dbname3.cz1sxf44hjhp.us-east-2.rds.amazonaws.com -p 5432 -U postgres
+
+sudo yum install git
+
+sudo curl https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+
+sudo chmod 777
+
