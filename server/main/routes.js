@@ -3,9 +3,9 @@ const express = require('express')
 const router = express.Router()
 const pool = require('./db');
 
-// router.get('/hello', (req, res) => {
-//   res.json('hello world')
-// })
+router.get('/hello', (req, res) => {
+  res.json('hello world')
+})
 
 /**
   POSTS ROUTES SECTION
