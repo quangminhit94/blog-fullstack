@@ -1,6 +1,4 @@
 const { Pool } = require('pg');
-const fs = require('fs');
-const path = require('path');
 
 const pool = new Pool({
   user: 'postgres',
@@ -8,12 +6,7 @@ const pool = new Pool({
   database: 'dbname3',
   password: 'postgres',
   post: 5432,
-  ssl: {
-    rejectUnauthorized : false,
-    ca   : fs.readFileSync(path.join(__dirname, "keypair1.pem")).toString(),
-    key  : fs.readFileSync(path.join(__dirname, "keypair1.pem")).toString(),
-    cert : fs.readFileSync(path.join(__dirname, "keypair1.pem")).toString(),
-  }
+  ssl: true
 })
 
 module.exports = pool
