@@ -139,6 +139,12 @@ sudo amazon-linux-extras install nginx1.12
 cd /etc/nginx
 
 <!-- Write to nginx.conf -->
+server {
+    listen  80 default_server;
+    listen [::]:80 default_server;
+    server_name server 1;
+}
+
 location / {
     root /fullstack-react-express-psql/server/build;
     index index.html
@@ -158,6 +164,9 @@ location /api {
 
 
 <!-- test nginx -->
+
+cd /etc/nginx
+
 sudo nginx -t
 
 sudo systemctl restart nginx
@@ -167,3 +176,13 @@ sudo nano /var/log/nginx/error.log
 <!-- Maintain command -->
 cd /fullstack-react-express-psql
 sudo git pull
+pm2 list
+pm2 delete app 0
+pm2 start app.js -i max
+
+INSERT INTO posts (title, body, user_id, author, date_created)
+VALUES('POST 1', 'POST 1 CONTENT', null, null, NOW());
+
+# All command
+
+https://github.com/iqbal125/terminal_commands_fullstack
