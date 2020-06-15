@@ -15,13 +15,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // if(process.env.NODE_ENV === 'production') {
-if(true) {
-  app.use(express.static('build'))
-  app.get('/*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
+// if(true) {
+//   app.use(express.static('build'))
+//   app.get('/*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
 
-  })
-}
+//   })
+// }
 
 app.use('/', indexRouter)
 
