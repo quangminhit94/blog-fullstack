@@ -9,7 +9,7 @@ export default class Auth {
     this.auth0 = new auth0.WebAuth({
       domain: 'quangminhit94.auth0.com',
       clientID: 'Ru77tV6TPmNvvi3GSMV3g981973RV7Oc',
-      redirectUri: 'http://3.14.143.161:5010/callback',
+      redirectUri: 'http://3.14.143.161/callback',
       responseType: 'token id_token',
       scope: 'openid profile email'
     })
