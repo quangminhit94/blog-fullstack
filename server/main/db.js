@@ -9,9 +9,9 @@ const pool = new Pool({
   post: 5432,
   ssl: {
     rejectUnauthorized : false,
-    ca   : fs.readFileSync("./keypair1.pem").toString(),
-    key  : fs.readFileSync("./keypair1.pem").toString(),
-    cert : fs.readFileSync("./keypair1.pem").toString(),
+    ca   : fs.readFileSync(path.join(__dirname, "keypair1.pem")).toString(),
+    key  : fs.readFileSync(path.join(__dirname, "keypair1.pem")).toString(),
+    cert : fs.readFileSync(path.join(__dirname, "keypair1.pem")).toString(),
   }
 })
 
