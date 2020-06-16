@@ -7,6 +7,10 @@ router.get('/hello', (req, res) => {
   res.json('hello world')
 })
 
+router.get('/callback', (req, res) => {
+  res.json('callback')
+})
+
 /**
   POSTS ROUTES SECTION
 */
