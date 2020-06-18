@@ -138,6 +138,8 @@ sudo amazon-linux-extras install nginx1.12
 
 cd /etc/nginx
 
+sudo nano nginx.conf
+
 <!-- Write to nginx.conf -->
 server {
     listen  80 default_server;
@@ -149,6 +151,7 @@ location / {
     root /fullstack-react-express-psql/server/build;
     index index.html
     try_file $uri /index.html;
+    try_files $uri $uri/ /index.html =404;
 }
 location /api {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
