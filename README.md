@@ -4,6 +4,7 @@ Please watch this to details.
 
 [FullstackReact Fullstack with express, PostgreSQL and AWS](https://www.youtube.com/watch?v=RoPlkFRHqgE&amp;list=PLMc67XEAt-yzxRboCFHza4SBOxNr7hDD5&amp;index=2&amp;t=1s)
 
+My site: http://3.14.143.161:5010/
 ## 1. Basic express setup
 
 ### Install express global
