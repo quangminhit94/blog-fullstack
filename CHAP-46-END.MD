@@ -189,3 +189,10 @@ VALUES('POST 1', 'POST 1 CONTENT', null, null, NOW());
 # All command
 
 https://github.com/iqbal125/terminal_commands_fullstack
+
+# My server
+
+ssh -i "keypair1.pem" ec2-user@3.14.143.161
+## restart server
+
+pm2 restart app 0
